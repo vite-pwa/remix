@@ -61,20 +61,28 @@ pnpm add @vite-pwa/remix -D
 
 ## 🦄 Usage
 
-Add `@vite-pwa/remix` plugin to `vite.config.js` and configure it:
+Import the `@vite-pwa/remix` helper, create the Remix PWA Preset and the PWA Plugin and configure them in your Vite configuration file:
 
 ```ts
 // vite.config.js
+import { vitePlugin as remix } from '@remix-run/dev'
+import { installGlobals } from '@remix-run/node'
 import { defineConfig } from 'vite'
-import { RemixPWAPlugin } from '@vite-pwa/remix'
+import { RemixVitePWA } from '@vite-pwa/remix'
+
+installGlobals()
+
+const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA()
 
 export default defineConfig({
-  plugins: [RemixPWAPlugin({
-     // Your Remix plugin options
-     pwa: {
-       // PWA options
-     } 
-  })]
+  plugins: [
+    remix({
+      presets: [RemixPWAPreset()],
+    }),
+    RemixVitePWAPlugin({
+      // PWA options
+    })
+  ]
 })
 ```
 Read the [📖 documentation](https://vite-pwa-org.netlify.app/frameworks/remix) for a complete guide on how to configure and use
