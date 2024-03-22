@@ -29,6 +29,7 @@ export default defineBuildConfig([{
     'react',
     'react-dom',
     'virtual:pwa-info',
+    'virtual:pwa-assets/head',
   ],
   rollup: {
     emitCJS: true,
