@@ -36,11 +36,11 @@ Zero-config PWA Plugin for Remix
 - 🦾 **Type Strong**: written in [TypeScript](https://www.typescriptlang.org/)
 - 🔌 **Offline Support**: generate service worker with offline support (via Workbox)
 - ⚡ **Fully tree shakable**: auto inject Web App Manifest
-- 💬 **Prompt for new content**: built-in support for Vanilla JavaScript, Vue 3, React, Svelte, SolidJS, Preact and Remix
+- 💬 **Prompt for new content**: built-in support for Vanilla JavaScript, Vue 3, React, Svelte, SolidJS and Preact
 - ⚙️ **Stale-while-revalidate**: automatic reload when new content is available
 - ✨ **Static assets handling**: configure static assets for offline support
 - 🐞 **Development Support**: debug your custom service worker logic as you develop your application
-- 🛠️ **Versatile**: integration with meta frameworks: [îles](https://github.com/ElMassimo/iles), [SvelteKit](https://github.com/sveltejs/kit), [VitePress](https://github.com/vuejs/vitepress), [Astro](https://github.com/withastro/astro), and [Nuxt 3](https://github.com/nuxt/nuxt)
+- 🛠️ **Versatile**: integration with meta frameworks: [îles](https://github.com/ElMassimo/iles), [SvelteKit](https://github.com/sveltejs/kit), [VitePress](https://github.com/vuejs/vitepress), [Astro](https://github.com/withastro/astro), [Nuxt 3](https://github.com/nuxt/nuxt) and [Remix](https://github.com/remix-run/remix)
 - 💥 **PWA Assets Generator**: generate all the PWA assets from a single command and a single source image
 - 🚀 **PWA Assets Integration**: serving, generating and injecting PWA Assets on the fly in your application
 
