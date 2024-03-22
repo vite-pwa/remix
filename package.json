@@ -23,15 +23,15 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     },
     "./components": {
-      "import": "./dist/components/index.mjs",
-      "require": "./dist/components/index.cjs"
+      "types": "./dist/components/index.d.mts",
+      "default": "./dist/components/index.mjs"
     }
   },
-  "main": "dist/index.cjs",
+  "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "typesVersions": {
@@ -54,7 +54,7 @@
   "peerDependencies": {
     "@remix-run/dev": ">=2.8.0",
     "@vite-pwa/assets-generator": "^0.2.4",
-    "vite-plugin-pwa": ">=0.19.6 <1"
+    "vite-plugin-pwa": ">=0.19.7 <1"
   },
   "peerDependenciesMeta": {
     "@remix-run/dev": {
@@ -64,12 +64,10 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "vite-plugin-pwa": ">=0.19.6 <1"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.9.0",
     "@antfu/ni": "^0.21.12",
+    "@remix-run/dev": "^2.8.0",
     "@types/debug": "^4.1.8",
     "@types/node": "^20.8.7",
     "@types/react": "^18.2.22",
@@ -79,10 +77,8 @@
     "eslint": "^8.57.0",
     "esno": "^4.0.0",
     "https-localhost": "^4.7.1",
-    "@remix-run/dev": "^2.8.0",
     "typescript": "^5.4.3",
     "unbuild": "^2.0.0",
-    "vite": "^5.2.2",
-    "vite-plugin-pwa": ">=0.19.6 <1"
+    "vite": "^5.2.2"
   }
 }

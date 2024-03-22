@@ -12,7 +12,6 @@ export default defineBuildConfig([{
     'workbox-build',
   ],
   rollup: {
-    emitCJS: true,
     dts: {
       tsconfig: './tsconfig.node.json',
       respectExternal: true,
@@ -32,7 +31,6 @@ export default defineBuildConfig([{
     'virtual:pwa-assets/head',
   ],
   rollup: {
-    emitCJS: true,
     dts: {
       tsconfig: './tsconfig.json',
       respectExternal: true,

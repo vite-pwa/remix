@@ -10,8 +10,8 @@ export function PWAAssets() {
           <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
           )
         : null}
-      {pwaAssetsHead.links.map(({ id, ...link }) => (
-        <link key={id} {...link} />
+      {pwaAssetsHead.links.map(({ href, ...link }) => (
+        <link key={href} href={href} {...link} />
       ))}
       <PWAManifest />
     </>
