@@ -26,7 +26,8 @@ export default defineBuildConfig([{
   clean: false,
   declaration: true,
   externals: [
-    '@types/react-dom',
+    'react',
+    'react-dom',
     'virtual:pwa-info',
   ],
   rollup: {
