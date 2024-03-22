@@ -35,7 +35,6 @@ export default defineConfig({
       },
       pwaAssets: {
         config: true,
-        generateDtsIcons: true,
       },
       devOptions: {
         enabled: true,
