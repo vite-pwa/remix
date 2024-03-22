@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { pwaAssetsHead } from 'virtual:pwa-assets/head'
 import { PWAManifest } from './PWAManifest'
 
