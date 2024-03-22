@@ -22,7 +22,7 @@ interface RemixPWAContext {
   buildData?: Pick<ResolvedVitePluginConfig, 'appDirectory' | 'routes' | 'ssr'>
 }
 
-export function RemixPWA(config?: RemixPWAConfig) {
+export function RemixPWAPlugin(config?: RemixPWAConfig) {
   const userBuildEnd = config?.buildEnd
   const { pwa = {}, ...remixConfig } = config ?? {}
 

@@ -66,10 +66,10 @@ Add `@vite-pwa/remix` plugin to `vite.config.js` and configure it:
 ```ts
 // vite.config.js
 import { defineConfig } from 'vite'
-import { RemixPWA } from '@vite-pwa/remix'
+import { RemixPWAPlugin } from '@vite-pwa/remix'
 
 export default defineConfig({
-  plugins: [RemixPWA({
+  plugins: [RemixPWAPlugin({
      // Your Remix plugin options
      pwa: {
        // PWA options
