@@ -25,12 +25,15 @@ export function configurePWA(
       }
       else {
         options.workbox = options.workbox ?? {}
-        if (ssr) {
-          if (!('navigateFallback' in options.workbox))
+        if (!('navigateFallback' in options.workbox)) {
+          if (ssr)
             options.workbox.navigateFallback = basename ?? viteOptions.base ?? '/'
-          if (!('navigateFallbackAllowlist' in options.workbox))
-            options.workbox.navigateFallbackAllowlist = [new RegExp(`^${options.workbox.navigateFallback}$`)]
+          else
+            options.workbox.navigateFallback = 'index.html'
         }
+
+        if (ssr && !('navigateFallbackAllowlist' in options.workbox))
+          options.workbox.navigateFallbackAllowlist = [new RegExp(`^${options.workbox.navigateFallback}$`)]
 
         config = options.workbox
       }

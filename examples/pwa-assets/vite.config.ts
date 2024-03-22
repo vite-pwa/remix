@@ -11,11 +11,11 @@ const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA()
 export default defineConfig({
   plugins: [
     remix({
+      ssr: process.env.SPA !== 'true',
       presets: [RemixPWAPreset()],
     }),
     tsconfigPaths(),
     RemixVitePWAPlugin({
-      disable: true,
       mode: 'development',
       srcDir: 'app',
       base: '/',
@@ -31,7 +31,7 @@ export default defineConfig({
         },
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,png,svg,ico}'],
+        globPatterns: ['**/*.{js,html,css,png,svg,ico}'],
       },
       pwaAssets: {
         config: true,
