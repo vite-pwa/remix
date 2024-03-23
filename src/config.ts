@@ -9,6 +9,7 @@ export function configurePWA(
   ctx: RemixPWAContext,
   pwa: RemixPWAOptions,
 ) {
+  const { remix: _remix, ...pwaOptions } = pwa
   pwa.integration = {
     closeBundleOrder: 'post',
     async configureOptions(viteOptions, options) {
@@ -46,8 +47,8 @@ export function configurePWA(
     },
     async beforeBuildServiceWorker(options) {
       const { appDirectory, routes, ssr } = ctx.remixResolvedConfig
-      // we only need to handle build in SSR:
-      // - in dev mode, the pwa plugin will do the work for us here
+      // we only need to handle custom build in SSR:
+      // - in dev mode, the pwa plugin will do the work for us
       // - when building, we need to include the navigateFallback entry in the sw precache manifest
       // build flag is enabled in the remix preset in the buildEnd hook
       if (ctx.build && ssr) {
@@ -79,7 +80,7 @@ export function configurePWA(
     },
   }
 
-  return pwa
+  return pwaOptions
 }
 
 async function createRevision(path: string) {
