@@ -6,10 +6,11 @@ export * from './types'
 
 export function RemixVitePWA() {
   const ctx: RemixPWAContext = {
+    remixOptions: undefined!,
     remixResolvedConfig: undefined!,
+    resolvedPWAOptions: undefined!,
     api: undefined,
     build: false,
-    remixOptions: undefined!,
   }
 
   return {

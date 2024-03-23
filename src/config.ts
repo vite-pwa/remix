@@ -78,10 +78,12 @@ export function configurePWA(
           }
         }
       }
+      // prepare context to cleanup the server folder
+      ctx.resolvedPWAOptions = options
     },
   }
 
-  return pwaOptions
+  return pwa
 }
 
 async function createRevision(path: string) {
