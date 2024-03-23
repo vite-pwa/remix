@@ -25,6 +25,7 @@ export function RemixPreset(ctx: RemixPWAContext) {
 }
 
 async function cleanupServerFolder(ctx: RemixPWAContext, manifestName?: string) {
+  // todo: check why web manifest and registerSW.js created in server folder
   const { buildDirectory } = ctx.remixResolvedConfig
   try {
     await Promise.all([

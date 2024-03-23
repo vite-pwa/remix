@@ -21,7 +21,7 @@ export default defineBuildConfig([{
 }, {
   entries: [
     { input: 'src/components/index' },
-    { input: 'src/sw/offline' },
+    { input: 'src/sw/index' },
   ],
   clean: false,
   declaration: true,
@@ -31,7 +31,8 @@ export default defineBuildConfig([{
     'react-dom',
     'virtual:pwa-info',
     'virtual:pwa-assets/head',
-    'virtual:vite-pwa/remix/routes',
+    'virtual:vite-pwa/remix/sw',
+    'workbox-core',
     'workbox-precaching',
     'workbox-routing',
   ],

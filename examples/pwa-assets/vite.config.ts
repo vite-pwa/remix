@@ -17,7 +17,6 @@ export default defineConfig({
     tsconfigPaths(),
     RemixVitePWAPlugin({
       mode: 'development',
-      srcDir: 'app',
       base: '/',
       registerType: 'autoUpdate',
       manifest: {

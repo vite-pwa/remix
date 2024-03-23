@@ -3,18 +3,18 @@ import { createHash } from 'node:crypto'
 import { createReadStream } from 'node:fs'
 import { lstat } from 'node:fs/promises'
 import type { RemixPWAContext } from './context'
+import { SWPlugin } from './plugins/sw'
 import type { RemixPWAOptions } from './index'
 
 export function configurePWA(
   ctx: RemixPWAContext,
   pwaOptions: RemixPWAOptions,
 ) {
-  const { remix, ...pwa } = pwaOptions
-  ctx.remixOptions = remix
+  const pwa = preparePWAOptions(ctx, pwaOptions)
   pwa.integration = {
     closeBundleOrder: 'post',
     async configureOptions(viteOptions, options) {
-      const { ssr = true, basename, buildDirectory } = ctx.remixResolvedConfig
+      const { ssr, basename, buildDirectory } = ctx.remixResolvedConfig
       let config: Partial<
         import('workbox-build').BasePartial
           & import('workbox-build').GlobPartial
@@ -22,7 +22,30 @@ export function configurePWA(
       >
 
       if (options.strategies === 'injectManifest') {
-        options.injectManifest = options.injectManifest ?? {}
+        const swOptions = ctx.remixOptions.injectManifest
+        ctx.sw.promptForUpdate = options.registerType !== 'autoUpdate'
+        ctx.sw.cleanupOutdatedCaches = swOptions.cleanupOutdatedCaches ?? true
+        // We need ctx.sw.enablePrecaching option for remix virtual module,
+        // there is no callback to get resolved pwa options.
+        // We can only initialize the default injectionPoint: should be fixed in vite-plugin-pwa,
+        // the fix is about calling another new hook after calling configureOptions.
+        options.injectManifest = options.injectManifest ?? {
+          injectionPoint: 'self.__WB_MANIFEST',
+        }
+        if ('injectionPoint' in options.injectManifest)
+          ctx.sw.enablePrecaching = options.injectManifest.injectionPoint !== undefined
+        else
+          ctx.sw.enablePrecaching = true
+
+        if (ctx.sw.enablePrecaching) {
+          if (ssr)
+            ctx.sw.navigateFallback = basename || viteOptions.base || '/'
+          else
+            ctx.sw.navigateFallback = 'index.html'
+        }
+        options.injectManifest.plugins ??= []
+        options.injectManifest.plugins.push(SWPlugin(ctx))
+
         config = options.injectManifest
       }
       else {
@@ -77,7 +100,7 @@ export function configurePWA(
             })
           }
         }
-        // prepare context to cleanup the server folder
+        // prepare context to clean up the server folder in the preset
         ctx.resolvedPWAOptions = options
       }
     },
@@ -98,4 +121,23 @@ async function createRevision(path: string) {
       resolve(cHash.digest('hex'))
     })
   })
+}
+
+function preparePWAOptions(ctx: RemixPWAContext, pwaOptions: RemixPWAOptions) {
+  const { remix, ...pwa } = pwaOptions
+  const {
+    injectManifest = {},
+  } = remix ?? {}
+  const {
+    cleanupOutdatedCaches = true,
+    clientsClaimMode = 'auto',
+  } = injectManifest
+  ctx.remixOptions = {
+    injectManifest: {
+      cleanupOutdatedCaches,
+      clientsClaimMode,
+    },
+  }
+
+  return pwa
 }
