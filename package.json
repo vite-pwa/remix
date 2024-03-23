@@ -29,6 +29,13 @@
     "./components": {
       "types": "./dist/components/index.d.mts",
       "default": "./dist/components/index.mjs"
+    },
+    "./remix-routes": {
+      "types": "./remix-routes.d.ts"
+    },
+    "./sw/offline": {
+      "types": "./dist/sw/offline.d.mts",
+      "default": "./dist/sw/offline.mjs"
     }
   },
   "main": "dist/index.mjs",
@@ -38,11 +45,15 @@
     "*": {
       "components": [
         "dist/components/index.d.ts"
+      ],
+      "sw/offline": [
+        "dist/sw/offline.d.ts"
       ]
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "scripts": {
     "build": "unbuild",

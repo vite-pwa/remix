@@ -9,7 +9,7 @@ export function RemixVitePWA() {
     remixResolvedConfig: undefined!,
     api: undefined,
     build: false,
-    configured: false,
+    remixOptions: undefined!,
   }
 
   return {

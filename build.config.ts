@@ -21,14 +21,19 @@ export default defineBuildConfig([{
 }, {
   entries: [
     { input: 'src/components/index' },
+    { input: 'src/sw/offline' },
   ],
   clean: false,
   declaration: true,
   externals: [
+    '@remix-run/dev',
     'react',
     'react-dom',
     'virtual:pwa-info',
     'virtual:pwa-assets/head',
+    'virtual:vite-pwa/remix/routes',
+    'workbox-precaching',
+    'workbox-routing',
   ],
   rollup: {
     dts: {

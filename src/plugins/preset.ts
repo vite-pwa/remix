@@ -15,7 +15,6 @@ export function RemixPreset(ctx: RemixPWAContext) {
       },
       remixConfigResolved({ remixConfig }) {
         ctx.remixResolvedConfig = remixConfig
-        ctx.configured = true
       },
     } satisfies Preset
   }

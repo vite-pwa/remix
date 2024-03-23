@@ -7,9 +7,10 @@ import type { RemixPWAOptions } from './index'
 
 export function configurePWA(
   ctx: RemixPWAContext,
-  pwa: RemixPWAOptions,
+  pwaOptions: RemixPWAOptions,
 ) {
-  const { remix: _remix, ...pwaOptions } = pwa
+  const { remix, ...pwa } = pwaOptions
+  ctx.remixOptions = remix
   pwa.integration = {
     closeBundleOrder: 'post',
     async configureOptions(viteOptions, options) {
