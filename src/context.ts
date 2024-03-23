@@ -5,7 +5,7 @@ import type { RemixPWAOptions } from './types'
 export interface RemixPWAContext {
   remixOptions?: Pick<RemixPWAOptions, 'remix'>
   remixResolvedConfig: ResolvedVitePluginConfig
-  resolvedPWAOptions: ResolvedVitePWAOptions
+  resolvedPWAOptions?: ResolvedVitePWAOptions
   api?: VitePluginPWAAPI
   build: boolean
 }

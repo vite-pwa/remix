@@ -13,7 +13,7 @@ export function RemixPreset(ctx: RemixPWAContext) {
             ctx.build = true
             await ctx.api?.generateSW()
             if (ctx.remixResolvedConfig.ssr && ctx.resolvedPWAOptions)
-              await cleanupServerFolder(ctx)
+              await cleanupServerFolder(ctx, ctx.resolvedPWAOptions.manifestFilename)
           },
         }
       },
@@ -24,14 +24,12 @@ export function RemixPreset(ctx: RemixPWAContext) {
   }
 }
 
-async function cleanupServerFolder(ctx: RemixPWAContext) {
+async function cleanupServerFolder(ctx: RemixPWAContext, manifestName?: string) {
   const { buildDirectory } = ctx.remixResolvedConfig
   try {
     await Promise.all([
       resolve(buildDirectory, 'server/registerSW.js'),
-      ctx.resolvedPWAOptions.manifestFilename
-        ? resolve(buildDirectory, `server/${ctx.resolvedPWAOptions.manifestFilename}`)
-        : undefined,
+      manifestName ? resolve(buildDirectory, `server/${manifestName}`) : undefined,
     ].map(async (file) => {
       if (!file)
         return

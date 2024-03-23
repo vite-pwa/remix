@@ -8,7 +8,6 @@ export function RemixVitePWA() {
   const ctx: RemixPWAContext = {
     remixOptions: undefined!,
     remixResolvedConfig: undefined!,
-    resolvedPWAOptions: undefined!,
     api: undefined,
     build: false,
   }

@@ -77,9 +77,9 @@ export function configurePWA(
             })
           }
         }
+        // prepare context to cleanup the server folder
+        ctx.resolvedPWAOptions = options
       }
-      // prepare context to cleanup the server folder
-      ctx.resolvedPWAOptions = options
     },
   }
 
