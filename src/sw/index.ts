@@ -11,7 +11,7 @@ import {
 } from 'virtual:vite-pwa/remix/sw'
 import { cleanupOutdatedCaches as cleanCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
-import { clientsClaim as claim } from 'workbox-core'
+import { clientsClaim } from 'workbox-core'
 import type { PrecacheEntry } from 'workbox-precaching'
 
 declare const self: ServiceWorkerGlobalScope
@@ -86,7 +86,7 @@ export function setupPwa(options: PwaOptions = {}) {
     else {
       self.skipWaiting()
       if (clientsClaimMode)
-        claim()
+        clientsClaim()
     }
   }
 }
