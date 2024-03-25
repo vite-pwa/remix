@@ -1,21 +1,26 @@
-import { json, useLoaderData } from "@remix-run/react";
+import { json, useLoaderData } from '@remix-run/react'
 
-type Params = {
-  name: string;
-};
+interface Params {
+  name: string
+}
 
-export const loader = ({ params }: { params: Params }) => {
-  return json(params);
-};
+export function loader({ params }: { params: Params }) {
+  return json(params)
+}
+
+const date = import.meta.env.VITE_BUILD_DATE
 
 export default function Hi() {
-  const date = "__DATE__";
-  const params = useLoaderData<typeof loader>();
+  const params = useLoaderData<typeof loader>()
 
   return (
-    <div>
+    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8', textAlign: 'center' }}>
+      <h1>Hi PWA Remix</h1>
       <div>
-        <strong>/hi</strong> route, built at: {date}
+        <strong>/hi</strong>
+        {' '}
+        route, built at:
+        {date}
       </div>
       <p>
         Hi:
@@ -24,5 +29,5 @@ export default function Hi() {
       <br />
       <a href="/">Go Home</a>
     </div>
-  );
+  )
 }
