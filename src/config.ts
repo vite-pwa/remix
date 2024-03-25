@@ -76,11 +76,11 @@ export function configurePWA(
       // - when building, we need to include the navigateFallback entry in the sw precache manifest
       // build flag is enabled in the remix preset in the buildEnd hook
       if (ctx.build && ssr) {
-        const entryPoint = Object.entries(routes).find(([name]) => name === 'routes/_index')
+        const entryPoint = Object.values(routes).find(r => r.index === true)
         if (entryPoint) {
           // assume the fallback is the root page, remix integration will allow to configure it
           // we're going to add the / route with the corresponding tsx file hash
-          const path = resolvePath(appDirectory, entryPoint![1].file)
+          const path = resolvePath(appDirectory, entryPoint.file)
           if (options.strategies === 'injectManifest') {
             options.injectManifest.manifestTransforms ??= []
             options.injectManifest.manifestTransforms.push(async (entries) => {
