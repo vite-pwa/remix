@@ -26,8 +26,6 @@ export default defineConfig({
   },
   plugins: [
     remix({
-      // for testing purposes only
-      ssr: process.env.SPA !== 'true',
       presets: [RemixPWAPreset()],
     }),
     tsconfigPaths(),
