@@ -7,11 +7,11 @@ export function setupRoutes() {
   // disable precaching in dev
   if (import.meta.env.PROD) {
     const baseUrl = import.meta.env.BASE_URL
-    const useStaticRoutes = staticRoutes.filter(r => r.path && !r.path.includes(':')).reduce((acc, r) => {
+    const useStaticRoutes = staticRoutes.reduce((acc, r) => {
       acc.push(`(${r.path!})`)
       return acc
     }, [] as string[])
-    const useDynamicRoutes = dynamicRoutes.filter(r => r.path && r.path.includes(':')).reduce((acc, r) => {
+    const useDynamicRoutes = dynamicRoutes.reduce((acc, r) => {
       acc.push(r.path!)
       return acc
     }, [] as string[])
