@@ -18,7 +18,18 @@ declare const self: ServiceWorkerGlobalScope
 
 export interface PwaOptions {
   manifest?: Array<PrecacheEntry | string>
+  precacheStaticRoutes?: boolean
   configureRoutes?: (routes: ConfigRoute[], ssr: boolean) => void
+}
+
+export {
+  cleanupOutdatedCaches,
+  clientsClaimMode,
+  enablePrecaching,
+  navigateFallback,
+  promptForUpdate,
+  routes,
+  ssr,
 }
 
 // todo: move this to the server? we don't need to do this in the client, the server can generate all the stuff
