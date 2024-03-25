@@ -21,6 +21,20 @@ export interface PwaOptions {
   configureRoutes?: (routes: ConfigRoute[], ssr: boolean) => void
 }
 
+const baseUrl = import.meta.env.BASE_URL
+
+export {
+  baseUrl,
+  cleanupOutdatedCaches,
+  clientsClaimMode,
+  enablePrecaching,
+  navigateFallback,
+  promptForUpdate,
+  routes,
+  ssr,
+  version,
+}
+
 // todo: move this to the server? we don't need to do this in the client, the server can generate all the stuff
 export function setupPwa(options: PwaOptions = {}) {
   if (import.meta.env.DEV) {
