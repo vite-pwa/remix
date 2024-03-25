@@ -1,9 +1,11 @@
-import { baseUrl, setupPwa } from '@vite-pwa/remix/sw'
+import { setupPwa } from '@vite-pwa/remix/sw'
 import { registerRoute } from 'workbox-routing'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 import { NetworkOnly, StaleWhileRevalidate } from 'workbox-strategies'
 
 declare const self: ServiceWorkerGlobalScope
+
+const baseUrl = import.meta.env.BASE_URL
 
 setupPwa({
   manifest: self.__WB_MANIFEST,
@@ -18,7 +20,6 @@ setupPwa({
     }, [] as string[])
     if (staticRoutes.length) {
       const staticRoutesRegexp = new RegExp(`^${baseUrl}(${staticRoutes.join('|')})$`)
-      console.log(staticRoutesRegexp.source)
       registerRoute(
         ({ request, sameOrigin, url }) => request.destination === 'document' && sameOrigin && staticRoutesRegexp.test(url.pathname),
         new StaleWhileRevalidate({
@@ -45,7 +46,6 @@ setupPwa({
         })
         return `(${parts.join('/')})`
       }).join('|')})$`)
-      console.log(dynamicRoutesRegexp.source)
       registerRoute(
         ({ request, sameOrigin, url }) => request.destination === 'document' && sameOrigin && dynamicRoutesRegexp.test(url.pathname),
         new NetworkOnly({
