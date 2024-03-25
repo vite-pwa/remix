@@ -47,7 +47,7 @@ Zero-config PWA Plugin for Remix
 
 ## 📦 Install
 
-`@vite-pwa/remix` requires **Vite 5** and **Astro 2.8.0 or above**.
+`@vite-pwa/remix` requires **Vite 5** and **Remix 2.8.0 or above**.
 
 ```bash
 npm i @vite-pwa/remix -D 
