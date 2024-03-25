@@ -18,6 +18,7 @@ declare const self: ServiceWorkerGlobalScope
 
 export interface PwaOptions {
   manifest?: Array<PrecacheEntry | string>
+  precacheStaticRoutes?: boolean
   configureRoutes?: (routes: ConfigRoute[], ssr: boolean) => void
 }
 
