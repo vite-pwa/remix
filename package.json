@@ -14,7 +14,7 @@
   },
   "bugs": "https://github.com/vite-pwa/remix/issues",
   "keywords": [
-    "remix-integration",
+    "remix-preset",
     "remix",
     "workbox",
     "pwa",
