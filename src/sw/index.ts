@@ -1,12 +1,13 @@
 import {
-  type ConfigRoute,
   cleanupOutdatedCaches,
   clientsClaimMode,
+  dynamicRoutes,
   enablePrecaching,
   navigateFallback,
   promptForUpdate,
   routes,
   ssr,
+  staticRoutes,
   version,
 } from 'virtual:vite-pwa/remix/sw'
 import { cleanupOutdatedCaches as cleanCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
@@ -18,8 +19,6 @@ declare const self: ServiceWorkerGlobalScope
 
 export interface PwaOptions {
   manifest?: Array<PrecacheEntry | string>
-  precacheStaticRoutes?: boolean
-  configureRoutes?: (routes: ConfigRoute[], ssr: boolean) => void
 }
 
 export {
@@ -28,6 +27,8 @@ export {
   enablePrecaching,
   navigateFallback,
   promptForUpdate,
+  staticRoutes,
+  dynamicRoutes,
   routes,
   ssr,
 }
@@ -67,8 +68,6 @@ export function setupPwa(options: PwaOptions = {}) {
       allowlist: [/^\/$/],
     }))
   }
-
-  options.configureRoutes?.(routes, ssr)
 
   if (!promptForUpdate) {
     if (clientsClaimMode === 'auto') {

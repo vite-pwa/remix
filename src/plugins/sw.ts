@@ -22,9 +22,11 @@ export function SWPlugin(ctx: RemixPWAContext) {
           promptForUpdate,
         } = ctx.sw
 
-        const useRoutes = Object.values(ctx.remixResolvedConfig.routes).filter((r) => {
+        const allRoutes = Object.values(ctx.remixResolvedConfig.routes).filter((r) => {
           return r.index !== true && r.id !== 'root'
         })
+        const staticRoutes = allRoutes.filter(r => r.path && !r.path.includes(':'))
+        const dynamicRoutes = allRoutes.filter(r => r.path && r.path.includes(':'))
 
         return `export const version = '${version}'
 export const ssr = ${ctx.remixResolvedConfig.ssr}
@@ -33,7 +35,9 @@ export const navigateFallback = ${JSON.stringify(navigateFallback)}
 export const clientsClaimMode = ${JSON.stringify(clientsClaimMode)}
 export const cleanupOutdatedCaches = ${cleanupOutdatedCaches}
 export const promptForUpdate = ${promptForUpdate}
-export const routes = ${JSON.stringify(useRoutes)}
+export const staticRoutes = ${JSON.stringify(staticRoutes)}
+export const dynamicRoutes = ${JSON.stringify(dynamicRoutes)}
+export const routes = ${JSON.stringify(allRoutes)}
 `
       }
     },

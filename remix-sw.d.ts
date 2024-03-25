@@ -10,5 +10,7 @@ declare module 'virtual:vite-pwa/remix/sw' {
   export const clientsClaimMode: 'auto' | boolean
   export const cleanupOutdatedCaches: boolean
   export const promptForUpdate: boolean
+  export const staticRoutes: ConfigRoute[]
+  export const dynamicRoutes: ConfigRoute[]
   export const routes: ConfigRoute[]
 }
