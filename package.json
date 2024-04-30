@@ -2,7 +2,7 @@
   "name": "@vite-pwa/remix",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@9.0.6",
   "description": "Zero-config PWA for Remix",
   "author": "antfu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -65,7 +65,7 @@
   "peerDependencies": {
     "@remix-run/dev": ">=2.8.0",
     "@vite-pwa/assets-generator": "^0.2.4",
-    "vite-plugin-pwa": ">=0.19.7 <1"
+    "vite-plugin-pwa": ">=0.20.0 <1"
   },
   "peerDependenciesMeta": {
     "@remix-run/dev": {
