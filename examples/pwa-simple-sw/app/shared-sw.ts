@@ -1,4 +1,4 @@
-import { dynamicRoutes, staticRoutes } from '@vite-pwa/remix/sw'
+import { dynamicRoutes, staticRoutes } from 'virtual:vite-pwa/remix/sw'
 import { registerRoute } from 'workbox-routing'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 import { NetworkOnly, StaleWhileRevalidate } from 'workbox-strategies'
