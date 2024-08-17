@@ -1,6 +1,6 @@
 <p align='center'>
 <img src='./hero.png' alt="@vite-pwa/remix - Zero-config PWA Plugin for Remix"><br>
-Zero-config PWA Plugin for Remix
+Zero-config PWA Plugin for RemixX
 </p>
 
 <p align='center'>
