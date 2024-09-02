@@ -10,7 +10,7 @@
   "homepage": "https://github.com/vite-pwa/remix#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vite-pwa/remix.git"
+    "url": "git+https://github.com/vite-pwa/remix.git"
   },
   "bugs": "https://github.com/vite-pwa/remix/issues",
   "keywords": [
