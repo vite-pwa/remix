@@ -12,8 +12,8 @@ importers:
         specifier: ^0.2.4
         version: 0.2.4
       vite-plugin-pwa:
-        specifier: '>=0.20.0 <1'
-        version: 0.20.0(@vite-pwa/assets-generator@0.2.4)(vite@5.2.10(@types/node@20.12.7)(terser@5.31.0))(workbox-build@7.1.0)(workbox-window@7.1.0)
+        specifier: '>=0.20.3 <1'
+        version: 0.20.3(@vite-pwa/assets-generator@0.2.4)(vite@5.2.10(@types/node@20.12.7)(terser@5.31.0))(workbox-build@7.1.0)(workbox-window@7.1.0)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.9.0
@@ -3037,6 +3037,14 @@ packages:
   fault@2.0.1:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
 
+  fdir@6.3.0:
+    resolution: {integrity: sha512-QOnuT+BOtivR77wYvCWHfGt9s4Pz1VIMbD463vegT5MLqNXy8rYFT/lPVEqf/bhYeT6qmqrNHhsX+rWwe3rOCQ==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -5191,6 +5199,10 @@ packages:
   through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
 
+  tinyglobby@0.2.5:
+    resolution: {integrity: sha512-Dlqgt6h0QkoHttG53/WGADNh9QhcjCAIZMTERAVhdpmIBEejSuLI9ZmGKWzB7tweBjlk30+s/ofi4SLmBeTYhw==}
+    engines: {node: '>=12.0.0'}
+
   to-data-view@1.1.0:
     resolution: {integrity: sha512-1eAdufMg6mwgmlojAx3QeMnzB/BTVp7Tbndi3U7ftcT2zCZadjxkkmLmd97zmaxWi+sgGcgWrokmpEoy0Dn0vQ==}
 
@@ -5462,8 +5474,8 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite-plugin-pwa@0.20.0:
-    resolution: {integrity: sha512-/kDZyqF8KqoXRpMUQtR5Atri/7BWayW8Gp7Kz/4bfstsV6zSFTxjREbXZYL7zSuRL40HGA+o2hvUAFRmC+bL7g==}
+  vite-plugin-pwa@0.20.3:
+    resolution: {integrity: sha512-aqCOWWSwfX4o6H+6NyEvhzFs3eENBqYFKUK4FYx5OZ3jGio73BE189bPz9+BBgjHBLozldQVSmZTHySVC2zNkg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^0.2.4
@@ -7555,7 +7567,7 @@ snapshots:
       '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.5)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.5
       '@vanilla-extract/css': 1.15.1
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
@@ -9087,6 +9099,10 @@ snapshots:
   fault@2.0.1:
     dependencies:
       format: 0.2.2
+
+  fdir@6.3.0(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
 
   file-entry-cache@6.0.1:
     dependencies:
@@ -11534,6 +11550,11 @@ snapshots:
       readable-stream: 2.3.8
       xtend: 4.0.2
 
+  tinyglobby@0.2.5:
+    dependencies:
+      fdir: 6.3.0(picomatch@4.0.2)
+      picomatch: 4.0.2
+
   to-data-view@1.1.0: {}
 
   to-fast-properties@2.0.0: {}
@@ -11861,11 +11882,11 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-pwa@0.20.0(@vite-pwa/assets-generator@0.2.4)(vite@5.2.10(@types/node@20.12.7)(terser@5.31.0))(workbox-build@7.1.0)(workbox-window@7.1.0):
+  vite-plugin-pwa@0.20.3(@vite-pwa/assets-generator@0.2.4)(vite@5.2.10(@types/node@20.12.7)(terser@5.31.0))(workbox-build@7.1.0)(workbox-window@7.1.0):
     dependencies:
       debug: 4.3.4
-      fast-glob: 3.3.2
       pretty-bytes: 6.1.1
+      tinyglobby: 0.2.5
       vite: 5.2.10(@types/node@20.12.7)(terser@5.31.0)
       workbox-build: 7.1.0
       workbox-window: 7.1.0
