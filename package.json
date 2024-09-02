@@ -1,7 +1,7 @@
 {
   "name": "@vite-pwa/remix",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@9.9.0",
   "description": "Zero-config PWA for Remix",
   "author": "antfu <anthonyfu117@hotmail.com>",
