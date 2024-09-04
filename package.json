@@ -36,7 +36,8 @@
     "./sw": {
       "types": "./dist/sw/index.d.mts",
       "default": "./dist/sw/index.mjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -64,8 +65,8 @@
   },
   "peerDependencies": {
     "@remix-run/dev": ">=2.8.0",
-    "@vite-pwa/assets-generator": "^0.2.4",
-    "vite-plugin-pwa": ">=0.20.3 <1"
+    "@vite-pwa/assets-generator": "^0.2.6",
+    "vite-plugin-pwa": ">=0.20.4 <1"
   },
   "peerDependenciesMeta": {
     "@remix-run/dev": {
