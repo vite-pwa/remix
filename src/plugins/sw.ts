@@ -1,18 +1,18 @@
 import type { Plugin } from 'vite'
 import type { BasePWAContext } from '../context'
 
-const VIRTUAL_REACT_ROUTER_SW = 'virtual:vite-pwa/reactrouter/sw'
-const RESOLVED_VIRTUAL_REACT_ROUTER_SW = `\0${VIRTUAL_REACT_ROUTER_SW}`
+const VIRTUAL_REMIX_SW = 'virtual:vite-pwa/remix/sw'
+const RESOLVED_VIRTUAL_REMIX_SW = `\0${VIRTUAL_REMIX_SW}`
 
 export function SWPlugin(ctx: BasePWAContext) {
   return {
-    name: 'vite-pwa:reactrouter:sw',
+    name: 'vite-pwa:remix:sw',
     enforce: 'pre',
     resolveId(id, _, options) {
-      return !options.ssr && id === VIRTUAL_REACT_ROUTER_SW ? RESOLVED_VIRTUAL_REACT_ROUTER_SW : null
+      return !options.ssr && id === VIRTUAL_REMIX_SW ? RESOLVED_VIRTUAL_REMIX_SW : null
     },
     load(id) {
-      if (id === RESOLVED_VIRTUAL_REACT_ROUTER_SW) {
+      if (id === RESOLVED_VIRTUAL_REMIX_SW) {
         const {
           version,
           enablePrecaching,

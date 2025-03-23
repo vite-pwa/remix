@@ -14,7 +14,7 @@
       "@react-router/node",
       "vite/client",
       "vite-plugin-pwa/client",
-      "@vite-pwa/remix/react-router-sw"
+      "@vite-pwa/remix/remix-sw"
     ],
     "allowJs": true,
     "strict": true,

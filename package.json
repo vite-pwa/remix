@@ -34,9 +34,6 @@
     "./remix-sw": {
       "types": "./remix-sw.d.ts"
     },
-    "./react-router-sw": {
-      "types": "./react-router-sw.d.ts"
-    },
     "./sw": {
       "types": "./dist/sw/index.d.mts",
       "default": "./dist/sw/index.mjs"
