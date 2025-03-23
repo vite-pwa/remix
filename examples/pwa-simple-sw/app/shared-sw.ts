@@ -17,21 +17,15 @@ export async function resolveRoutePath(r: RouteConfig) {
   return routes
 }
 
-export async function resolveRegisteredRoutes(routes: RouteConfig[]) {
-  const resolvedRoutes = await Promise.all(routes.map(resolveRoutePath))
-
-  return resolvedRoutes.flat()
-}
-
 export async function setupRoutes() {
   // disable precaching in dev
   if (!import.meta.env.PROD)
     return
 
   const baseUrl = import.meta.env.BASE_URL
-  const useStaticRoutes = await resolveRegisteredRoutes(staticRoutes)
+  const useStaticRoutes = await resolveRoutePath(staticRoutes)
 
-  const useDynamicRoutes = await resolveRegisteredRoutes(dynamicRoutes)
+  const useDynamicRoutes = await resolveRoutePath(dynamicRoutes)
 
   if (useStaticRoutes.length) {
     const staticRoutesRegexp = new RegExp(`^${baseUrl}(${useStaticRoutes.join('|')})$`)

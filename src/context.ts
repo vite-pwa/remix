@@ -10,7 +10,7 @@ export interface ReactRouterPWASWContext {
   clientsClaimMode: 'auto' | boolean
   cleanupOutdatedCaches: boolean
   promptForUpdate: boolean
-  routes: RouteConfig[]
+  routes: RouteConfig
 }
 
 export interface ResolvedReactRouterPWASWOptions {

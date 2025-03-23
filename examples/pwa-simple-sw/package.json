@@ -13,7 +13,7 @@
     "build": "VIRTUAL_PWA_MODULE=true react-router build",
     "build:auto": "react-router build",
     "build:plain": "PLAIN_SW=true react-router build",
-    "start": "node ./build/server/index.js",
+    "start": "react-router-serve ./build/server/index.js",
     "start:spa": "npx serve build/client",
     "typecheck": "tsc"
   },

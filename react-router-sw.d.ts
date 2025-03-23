@@ -10,7 +10,7 @@ declare module 'virtual:vite-pwa/reactrouter/sw' {
   export const clientsClaimMode: 'auto' | boolean
   export const cleanupOutdatedCaches: boolean
   export const promptForUpdate: boolean
-  export const staticRoutes: RouteConfig[]
-  export const dynamicRoutes: RouteConfig[]
-  export const routes: RouteConfig[]
+  export const staticRoutes: RouteConfig
+  export const dynamicRoutes: RouteConfig
+  export const routes: RouteConfig
 }

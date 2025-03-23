@@ -7,4 +7,4 @@ setupPwa({
   manifest: self.__WB_MANIFEST,
 })
 
-setupRoutes()
+setupRoutes().then(console.log)
