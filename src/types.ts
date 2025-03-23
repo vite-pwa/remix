@@ -1,6 +1,6 @@
 import type { VitePWAOptions } from 'vite-plugin-pwa'
 
-export interface ReactRouterPWAInjectManifest {
+export interface RemixPWAInjectManifest {
   /**
    * Remove old assets once the new service worker activated?
    *
@@ -22,14 +22,26 @@ export interface ReactRouterPWAInjectManifest {
   clientsClaimMode?: 'auto' | boolean
 }
 
+export interface RemixPWASWOptions {
+  /**
+   * Options when using `@vite-pwa/remix/sw` module in your custom service worker
+   */
+  injectManifest?: RemixPWAInjectManifest
+  // Add Remix-specific workbox options here: runtime caching for example
+}
+
+export interface RemixPWAOptions extends Partial<VitePWAOptions> {
+  remix?: RemixPWASWOptions
+}
+
 export interface ReactRouterPWASWOptions {
   /**
    * Options when using `@vite-pwa/remix/sw` module in your custom service worker
    */
-  injectManifest?: ReactRouterPWAInjectManifest
+  injectManifest?: RemixPWAInjectManifest
   // Add Remix-specific workbox options here: runtime caching for example
 }
 
 export interface ReactRouterPWAOptions extends Partial<VitePWAOptions> {
-  reactRouter?: ReactRouterPWASWOptions
+  swOptions?: ReactRouterPWASWOptions
 }

@@ -1,4 +1,4 @@
-import { setupPwa } from '@vite-pwa/react-router/sw'
+import { setupPwa } from '@vite-pwa/remix/sw'
 import { setupRoutes } from './shared-sw'
 
 declare const self: ServiceWorkerGlobalScope

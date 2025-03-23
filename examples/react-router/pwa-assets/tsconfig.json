@@ -10,24 +10,18 @@
       "~/*": ["./app/*"]
     },
     "resolveJsonModule": true,
-    "types": [
-      "@react-router/node",
-      "vite/client",
-      "vite-plugin-pwa/client",
-      "@vite-pwa/react-router/react-router-sw"
-    ],
+    "types": ["@vite-pwa/remix/react-router-sw", "vite/client", "vite-plugin-pwa/vanillajs"],
     "allowJs": true,
     "strict": true,
-
     // Vite takes care of building everything, not tsc.
     "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "skipLibCheck": true
+
   },
   "include": [
-    "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/.server/**/*.ts",

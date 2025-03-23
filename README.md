@@ -1,5 +1,5 @@
 <p align='center'>
-<img src='./hero.png' alt="@vite-pwa/react-router - Zero-config PWA Plugin for React Router"><br>
+<img src='./hero.png' alt="@vite-pwa/remix - Zero-config PWA Plugin for React Router"><br>
 Zero-config PWA Plugin for React Router
 </p>
 
@@ -45,27 +45,27 @@ Zero-config PWA Plugin for React Router
 
 ## 📦 Install
 
-`@vite-pwa/react-router` requires **Vite 5** and **React Router 7.4.0 or above**.
+`@vite-pwa/remix` requires **Vite 5** and **React Router 7.4.0 or above**.
 
 ```bash
-npm i @vite-pwa/react-router -D
+npm i @vite-pwa/remix -D
 
 # yarn
-yarn add @vite-pwa/react-router -D
+yarn add @vite-pwa/remix -D
 
 # pnpm
-pnpm add @vite-pwa/react-router -D
+pnpm add @vite-pwa/remix -D
 ```
 
 ## 🦄 Usage
 
-Import the `@vite-pwa/react-router` helper, create the React Router PWA Preset and the PWA Plugin and configure them in your Vite configuration file:
+Import the `@vite-pwa/remix` helper, create the React Router PWA Preset and the PWA Plugin and configure them in your Vite configuration file:
 
 ```ts
 // vite.config.js
 import { reactRouter } from '@react-router/dev/vite'
 import { defineConfig } from 'vite'
-import { ReactRouterVitePWAPlugin } from '@vite-pwa/react-router'
+import { ReactRouterVitePWAPlugin } from '@vite-pwa/remix'
 
 const { ReactRouterVitePWAPlugin } = ReactRouterVitePWA()
 

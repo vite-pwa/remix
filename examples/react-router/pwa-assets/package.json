@@ -1,0 +1,45 @@
+{
+  "name": "react-router-pwa-assets",
+  "type": "module",
+  "private": true,
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "react-router build",
+    "build:spa": "SPA=true react-router vite:build",
+    "dev": "react-router dev",
+    "dev:spa": "SPA=true react-router dev",
+    "start": "react-router serve ./build/server/index.js",
+    "start:spa": "npx serve build/client",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@react-router/dev": "^7.4.0",
+    "@react-router/node": "^7.4.0",
+    "isbot": "^5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^7.4.0",
+    "react-router-dom": "^7.4.0"
+  },
+  "devDependencies": {
+    "@react-router/fs-routes": "^7.4.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "@vite-pwa/assets-generator": "^0.2.4",
+    "@vite-pwa/remix": "workspace:*",
+    "eslint": "^8.57.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.4",
+    "vite-tsconfig-paths": "^4.2.1"
+  }
+}

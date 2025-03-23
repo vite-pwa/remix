@@ -26,11 +26,13 @@ export default defineBuildConfig([{
   clean: false,
   declaration: true,
   externals: [
+    '@remix-run/dev',
     '@react-router/dev',
     'react',
     'react-dom',
     'virtual:pwa-info',
     'virtual:pwa-assets/head',
+    'virtual:vite-pwa/remix/sw',
     'virtual:vite-pwa/reactrouter/sw',
     'workbox-core',
     'workbox-precaching',

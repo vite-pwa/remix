@@ -2,23 +2,30 @@ import { resolve as resolvePath } from 'node:path'
 import { createHash } from 'node:crypto'
 import { createReadStream, readFileSync } from 'node:fs'
 import { lstat } from 'node:fs/promises'
-import type { ReactRouterPWAContext } from './context'
+import type { BasePWAContext } from './context'
 import { SWPlugin } from './plugins/sw'
 import type { ReactRouterPWAOptions } from './index'
 
+export function loadReactRouterConfig(): BasePWAContext['resolvedConfig'] {
+  const rootDirectory = process.env.REACT_ROUTER_ROOT ?? process.cwd()
+  const storeFilePath = `${rootDirectory}/.react-router/react-router-pwa-rotues.json`
+  const reactRouterResolvedConfig = readFileSync(storeFilePath)
+  return JSON.parse(reactRouterResolvedConfig.toString())
+}
+
 export function configurePWA(
-  ctx: ReactRouterPWAContext,
+  ctx: BasePWAContext,
   pwaOptions: ReactRouterPWAOptions,
+  isReactRouter = false,
 ) {
   const pwa = preparePWAOptions(ctx, pwaOptions)
   pwa.integration = {
     closeBundleOrder: 'post',
     async configureOptions(viteOptions, options) {
-      const rootDirectory = process.env.REACT_ROUTER_ROOT ?? process.cwd()
-      const storeFilePath = `${rootDirectory}/.react-router/react-router-pwa-rotues.json`
-      const reactRouterResolvedConfig = readFileSync(storeFilePath)
-      ctx.reactRouterResolvedConfig = JSON.parse(reactRouterResolvedConfig.toString()) as typeof ctx['reactRouterResolvedConfig']
-      const { ssr, basename, buildDirectory } = ctx.reactRouterResolvedConfig
+      if (isReactRouter)
+        ctx.resolvedConfig = loadReactRouterConfig()
+
+      const { ssr, basename, buildDirectory } = ctx.resolvedConfig
       let config: Partial<
         import('workbox-build').BasePartial
           & import('workbox-build').GlobPartial
@@ -26,7 +33,7 @@ export function configurePWA(
       >
 
       if (options.strategies === 'injectManifest') {
-        const swOptions = ctx.reactRouterOptions.injectManifest
+        const swOptions = ctx.options.injectManifest
         ctx.sw.promptForUpdate = options.registerType !== 'autoUpdate'
         ctx.sw.cleanupOutdatedCaches = swOptions.cleanupOutdatedCaches ?? true
         // We need ctx.sw.enablePrecaching option for remix virtual module,
@@ -74,7 +81,7 @@ export function configurePWA(
         config.dontCacheBustURLsMatching = /assets\//
     },
     async beforeBuildServiceWorker(options) {
-      const { appDirectory, routes, ssr } = ctx.reactRouterResolvedConfig
+      const { appDirectory, routes, ssr } = ctx.resolvedConfig
       // we only need to handle custom build in SSR:
       // - in dev mode, the pwa plugin will do the work for us
       // - when building, we need to include the navigateFallback entry in the sw precache manifest
@@ -127,8 +134,8 @@ async function createRevision(path: string) {
   })
 }
 
-function preparePWAOptions(ctx: ReactRouterPWAContext, pwaOptions: ReactRouterPWAOptions) {
-  const { reactRouter: remix, ...pwa } = pwaOptions
+function preparePWAOptions(ctx: BasePWAContext, pwaOptions: ReactRouterPWAOptions) {
+  const { swOptions: remix, ...pwa } = pwaOptions
   const {
     injectManifest = {},
   } = remix ?? {}
@@ -136,7 +143,7 @@ function preparePWAOptions(ctx: ReactRouterPWAContext, pwaOptions: ReactRouterPW
     cleanupOutdatedCaches = true,
     clientsClaimMode = 'auto',
   } = injectManifest
-  ctx.reactRouterOptions = {
+  ctx.options = {
     injectManifest: {
       cleanupOutdatedCaches,
       clientsClaimMode,

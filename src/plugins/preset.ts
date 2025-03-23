@@ -1,18 +1,45 @@
 import { resolve } from 'node:path'
 import { access, constants, mkdir, rm, writeFile } from 'node:fs/promises'
-import type { Preset } from '@react-router/dev/config'
-import type { ReactRouterPWAContext } from '../context'
+import type { Preset as ReactRouterPresetType } from '@react-router/dev/config'
+import type { Preset as RemixPresetType } from '@remix-run/dev'
+import type { BasePWAContext } from '../context'
 
-export function ReactRouterPreset(ctx: ReactRouterPWAContext): () => Preset {
+export function RemixPreset(ctx: BasePWAContext) {
   return () => {
     return {
-      name: '@vite-pwa/react-router/preset',
+      name: '@vite-pwa/remix/preset',
+      remixConfig() {
+        return {
+          async buildEnd() {
+            ctx.build = true
+            await ctx.api?.generateSW()
+            if (ctx.resolvedConfig.ssr && ctx.resolvedPWAOptions)
+              await cleanupServerFolder(ctx, ctx.resolvedPWAOptions.manifestFilename)
+          },
+        }
+      },
+      remixConfigResolved({ remixConfig }) {
+        ctx.resolvedConfig = {
+          ...remixConfig,
+          prerender: false,
+          buildEnd: undefined,
+          future: undefined as never,
+        }
+      },
+    } satisfies RemixPresetType
+  }
+}
+
+export function ReactRouterPreset(ctx: BasePWAContext): () => ReactRouterPresetType {
+  return () => {
+    return {
+      name: '@vite-pwa/remix/preset',
       reactRouterConfig() {
         return {
           async buildEnd() {
             ctx.build = true
             await ctx.api?.generateSW()
-            if (ctx.reactRouterResolvedConfig?.ssr && ctx.resolvedPWAOptions)
+            if (ctx.resolvedConfig?.ssr && ctx.resolvedPWAOptions)
               await cleanupServerFolder(ctx, ctx.resolvedPWAOptions.manifestFilename)
           },
         }
@@ -31,13 +58,13 @@ export function ReactRouterPreset(ctx: ReactRouterPWAContext): () => Preset {
 
         await writeFile(storeFilePath, JSON.stringify(reactRouterConfig))
       },
-    } satisfies Preset
+    } satisfies ReactRouterPresetType
   }
 }
 
-async function cleanupServerFolder(ctx: ReactRouterPWAContext, manifestName?: string) {
+async function cleanupServerFolder(ctx: BasePWAContext, manifestName?: string) {
   // todo: check why web manifest and registerSW.js created in server folder
-  const { buildDirectory } = ctx.reactRouterResolvedConfig
+  const { buildDirectory } = ctx.resolvedConfig
   try {
     await Promise.all([
       resolve(buildDirectory!, 'server/registerSW.js'),

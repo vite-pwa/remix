@@ -1,9 +1,9 @@
 import type { ResolvedVitePWAOptions, VitePluginPWAAPI } from 'vite-plugin-pwa'
 import type { Preset } from '@react-router/dev/config'
 import type { RouteConfig } from '@react-router/dev/routes'
-import type { ReactRouterPWAInjectManifest } from './types'
+import type { RemixPWAInjectManifest } from './types'
 
-export interface ReactRouterPWASWContext {
+export interface RemixPWASWContext {
   version: string
   enablePrecaching: boolean
   navigateFallback?: string
@@ -13,15 +13,15 @@ export interface ReactRouterPWASWContext {
   routes: RouteConfig
 }
 
-export interface ResolvedReactRouterPWASWOptions {
-  injectManifest: Required<ReactRouterPWAInjectManifest>
-}
-
-export interface ReactRouterPWAContext {
-  reactRouterOptions: ResolvedReactRouterPWASWOptions
-  reactRouterResolvedConfig: Parameters<NonNullable<Preset['reactRouterConfigResolved']>>['0']['reactRouterConfig']
+export interface BasePWAContext {
   resolvedPWAOptions?: ResolvedVitePWAOptions
   api?: VitePluginPWAAPI
   build: boolean
-  sw: ReactRouterPWASWContext
+  sw: RemixPWASWContext
+  resolvedConfig: Parameters<NonNullable<Preset['reactRouterConfigResolved']>>['0']['reactRouterConfig']
+  options: ResolvedBasePWASWOptions
+}
+
+export interface ResolvedBasePWASWOptions {
+  injectManifest: Required<RemixPWAInjectManifest>
 }

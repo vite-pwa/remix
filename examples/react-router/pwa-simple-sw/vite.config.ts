@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { reactRouter } from '@react-router/dev/vite'
-import { ReactRouterVitePWA } from '@vite-pwa/react-router'
+import { ReactRouterVitePWA } from '@vite-pwa/remix'
 
 export const { ReactRouterVitePWAPlugin } = ReactRouterVitePWA()
 
@@ -73,7 +73,7 @@ export default defineConfig({
         type: 'module',
         suppressWarnings: true,
       },
-      reactRouter: {
+      swOptions: {
         injectManifest: {
           // for testing purposes only
           clientsClaimMode: usingRemixSW ? (virtualPwaModule ? true : 'auto') : undefined,

@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router'
-import { PWAAssets } from '@vite-pwa/react-router/components'
+import { PWAAssets } from '@vite-pwa/remix/components'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

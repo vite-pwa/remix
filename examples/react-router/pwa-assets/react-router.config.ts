@@ -1,4 +1,4 @@
-import { ReactRouterPreset } from '@vite-pwa/react-router'
+import { ReactRouterPreset } from '@vite-pwa/remix'
 
 export default {
   ssr: process.env.SPA === 'true',

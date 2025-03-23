@@ -1,10 +1,10 @@
 import type { Plugin } from 'vite'
-import type { ReactRouterPWAContext } from '../context'
+import type { BasePWAContext } from '../context'
 
 const VIRTUAL_REACT_ROUTER_SW = 'virtual:vite-pwa/reactrouter/sw'
 const RESOLVED_VIRTUAL_REACT_ROUTER_SW = `\0${VIRTUAL_REACT_ROUTER_SW}`
 
-export function SWPlugin(ctx: ReactRouterPWAContext) {
+export function SWPlugin(ctx: BasePWAContext) {
   return {
     name: 'vite-pwa:reactrouter:sw',
     enforce: 'pre',
@@ -22,14 +22,14 @@ export function SWPlugin(ctx: ReactRouterPWAContext) {
           promptForUpdate,
         } = ctx.sw
 
-        const allRoutes = Object.values(ctx.reactRouterResolvedConfig.routes).filter((r) => {
+        const allRoutes = Object.values(ctx.resolvedConfig.routes).filter((r) => {
           return r.index !== true && r.id !== 'root'
         })
         const staticRoutes = allRoutes.filter(r => r.path && !r.path.includes(':'))
         const dynamicRoutes = allRoutes.filter(r => r.path && r.path.includes(':'))
 
         return `export const version = '${version}'
-export const ssr = ${ctx.reactRouterResolvedConfig.ssr}
+export const ssr = ${ctx.resolvedConfig.ssr}
 export const enablePrecaching = ${enablePrecaching}
 export const navigateFallback = ${JSON.stringify(navigateFallback)}
 export const clientsClaimMode = ${JSON.stringify(clientsClaimMode)}

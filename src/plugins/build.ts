@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
-import type { ReactRouterPWAContext } from '../context'
+import type { BasePWAContext } from '../context'
 
-export function BuildPlugin(ctx: ReactRouterPWAContext) {
+export function BuildPlugin(ctx: BasePWAContext) {
   return {
     name: 'vite-pwa:reactrouter:build',
     apply: 'build',
