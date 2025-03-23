@@ -1,9 +1,3 @@
-<h3>This is a fork from <a href="https://github.com/vite-pwa/remix" target="__blank">
-@vite-pwa/remix
-</a></h3>
-
-<hr />
-
 <p align='center'>
 <img src='./hero.png' alt="@vite-pwa/react-router - Zero-config PWA Plugin for React Router"><br>
 Zero-config PWA Plugin for React Router
