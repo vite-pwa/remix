@@ -6,20 +6,9 @@ import type { BasePWAContext } from '../context'
 import { BuildPlugin } from './build'
 import { SWPlugin } from './sw'
 
-export function ReactRouterPlugin(ctx: BasePWAContext) {
+export function MainPlugin(ctx: BasePWAContext, isReactRouter = false) {
   return (config: ReactRouterPWAOptions = {}) => {
-    const pwaOptions = configurePWA(ctx, config, true)
-    return [
-      PWAPlugin(pwaOptions),
-      SWPlugin(ctx),
-      BuildPlugin(ctx),
-    ] as PluginOption
-  }
-}
-
-export function RemixPlugin(ctx: BasePWAContext) {
-  return (config: ReactRouterPWAOptions = {}) => {
-    const pwaOptions = configurePWA(ctx, config)
+    const pwaOptions = configurePWA(ctx, config, isReactRouter)
     return [
       PWAPlugin(pwaOptions),
       SWPlugin(ctx),

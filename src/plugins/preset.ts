@@ -1,8 +1,8 @@
-import { resolve } from 'node:path'
-import { access, constants, mkdir, rm, writeFile } from 'node:fs/promises'
+import { access, constants, mkdir, writeFile } from 'node:fs/promises'
 import type { Preset as ReactRouterPresetType } from '@react-router/dev/config'
 import type { Preset as RemixPresetType } from '@remix-run/dev'
 import type { BasePWAContext } from '../context'
+import type { BuildPluginType } from './build'
 
 export function RemixPreset(ctx: BasePWAContext) {
   return () => {
@@ -10,11 +10,13 @@ export function RemixPreset(ctx: BasePWAContext) {
       name: '@vite-pwa/remix/preset',
       remixConfig() {
         return {
-          async buildEnd() {
-            ctx.build = true
-            await ctx.api?.generateSW()
-            if (ctx.resolvedConfig.ssr && ctx.resolvedPWAOptions)
-              await cleanupServerFolder(ctx, ctx.resolvedPWAOptions.manifestFilename)
+          async buildEnd({ viteConfig }: { viteConfig: import('vite').ResolvedConfig }) {
+            const remixPwaBuildPlugin = viteConfig.plugins.find(plugin => plugin.name === 'vite-pwa:reactrouter:build') as BuildPluginType
+
+            if (!remixPwaBuildPlugin)
+              throw new Error('Remix PWA Plugin must be preset in vite.config')
+
+            await remixPwaBuildPlugin.onBuildEnd()
           },
         }
       },
@@ -30,54 +32,34 @@ export function RemixPreset(ctx: BasePWAContext) {
   }
 }
 
-export function ReactRouterPreset(ctx: BasePWAContext): () => ReactRouterPresetType {
-  return () => {
-    return {
-      name: '@vite-pwa/remix/preset',
-      reactRouterConfig() {
-        return {
-          async buildEnd() {
-            ctx.build = true
-            await ctx.api?.generateSW()
-            if (ctx.resolvedConfig?.ssr && ctx.resolvedPWAOptions)
-              await cleanupServerFolder(ctx, ctx.resolvedPWAOptions.manifestFilename)
-          },
-        }
-      },
-      async reactRouterConfigResolved({ reactRouterConfig }) {
-        const rootDirectory = process.env.REACT_ROUTER_ROOT ?? process.cwd()
+export function ReactRouterPreset(): ReactRouterPresetType {
+  return {
+    name: '@vite-pwa/remix/preset',
+    reactRouterConfig() {
+      return {
+        async buildEnd({ viteConfig }: { viteConfig: import('vite').ResolvedConfig }) {
+          const remixPwaBuildPlugin = viteConfig.plugins.find(plugin => plugin.name === 'vite-pwa:reactrouter:build') as BuildPluginType
 
-        try {
-          await access('.react-router', constants.F_OK)
-        }
-        catch (err) {
-          mkdir('.react-router')
-        }
+          if (!remixPwaBuildPlugin)
+            throw new Error('Remix PWA Plugin must be preset in vite.config')
 
-        const storeFilePath = `${rootDirectory}/.react-router/react-router-pwa-rotues.json`
-
-        await writeFile(storeFilePath, JSON.stringify(reactRouterConfig))
-      },
-    } satisfies ReactRouterPresetType
-  }
-}
-
-async function cleanupServerFolder(ctx: BasePWAContext, manifestName?: string) {
-  // todo: check why web manifest and registerSW.js created in server folder
-  const { buildDirectory } = ctx.resolvedConfig
-  try {
-    await Promise.all([
-      resolve(buildDirectory!, 'server/registerSW.js'),
-      manifestName ? resolve(buildDirectory!, `server/${manifestName}`) : undefined,
-    ].map(async (file) => {
-      if (!file)
-        return
+          await remixPwaBuildPlugin.onBuildEnd()
+        },
+      }
+    },
+    async reactRouterConfigResolved({ reactRouterConfig }) {
+      const rootDirectory = process.env.REACT_ROUTER_ROOT ?? process.cwd()
 
       try {
-        await rm(file, { force: true, recursive: false })
+        await access('.react-router', constants.F_OK)
       }
-      catch {}
-    }))
-  }
-  catch {}
+      catch (err) {
+        mkdir('.react-router')
+      }
+
+      const storeFilePath = `${rootDirectory}/.react-router/react-router-pwa-rotues.json`
+
+      await writeFile(storeFilePath, JSON.stringify(reactRouterConfig))
+    },
+  } satisfies ReactRouterPresetType
 }
