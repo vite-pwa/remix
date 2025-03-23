@@ -127,8 +127,7 @@ this plugin.
 [//]: # ()
 [//]: # (You need to stop the dev server once started and then run `npm run build && npm run preview` to see the PWA in action.)
 
-[//]: # (<import { vitePlugin as remix } from '@react-router/dev'
-table>)
+[//]: # (<table>)
 
 [//]: # (<thead>)
 
@@ -184,7 +183,7 @@ table>)
 
 [//]: # (</tbody>)
 
-[//]: # (</import>)
+[//]: # (</table>)
 
 ## 👀 Full config
 
