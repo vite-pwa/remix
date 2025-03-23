@@ -1,14 +1,16 @@
 import { version } from '../package.json'
-import type { RemixPWAContext } from './context'
-import { RemixPreset } from './plugins/preset'
+import type { ReactRouterPWAContext } from './context'
 import { MainPlugin } from './plugins'
 
 export * from './types'
+export { ReactRouterPreset } from './plugins/preset'
 
-export function RemixVitePWA() {
-  const ctx: RemixPWAContext = {
-    remixOptions: undefined!,
-    remixResolvedConfig: undefined!,
+export function ReactRouterVitePWA(): {
+  ReactRouterVitePWAPlugin: ReturnType<typeof MainPlugin>
+} {
+  const ctx: ReactRouterPWAContext = {
+    reactRouterOptions: undefined!,
+    reactRouterResolvedConfig: undefined!,
     api: undefined,
     build: false,
     sw: {
@@ -23,7 +25,6 @@ export function RemixVitePWA() {
   }
 
   return {
-    RemixVitePWAPlugin: MainPlugin(ctx),
-    RemixPWAPreset: RemixPreset(ctx),
+    ReactRouterVitePWAPlugin: MainPlugin(ctx),
   }
 }

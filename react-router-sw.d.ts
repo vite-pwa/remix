@@ -1,7 +1,7 @@
-declare module 'virtual:vite-pwa/remix/sw' {
-  import type { ConfigRoute } from '@remix-run/dev/dist/config/routes'
+declare module 'virtual:vite-pwa/reactrouter/sw' {
+  import type { RouteConfig } from '@react-router/dev/routes'
 
-  export type { ConfigRoute }
+  export type { RouteConfig }
 
   export const version: string
   export const ssr: boolean
@@ -10,7 +10,7 @@ declare module 'virtual:vite-pwa/remix/sw' {
   export const clientsClaimMode: 'auto' | boolean
   export const cleanupOutdatedCaches: boolean
   export const promptForUpdate: boolean
-  export const staticRoutes: ConfigRoute[]
-  export const dynamicRoutes: ConfigRoute[]
-  export const routes: ConfigRoute[]
+  export const staticRoutes: RouteConfig[]
+  export const dynamicRoutes: RouteConfig[]
+  export const routes: RouteConfig[]
 }

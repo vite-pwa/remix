@@ -1,18 +1,18 @@
 import type { Plugin } from 'vite'
-import type { RemixPWAContext } from '../context'
+import type { ReactRouterPWAContext } from '../context'
 
-const VIRTUAL_REMIX_SW = 'virtual:vite-pwa/remix/sw'
-const RESOLVED_VIRTUAL_REMIX_SW = `\0${VIRTUAL_REMIX_SW}`
+const VIRTUAL_REACT_ROUTER_SW = 'virtual:vite-pwa/reactrouter/sw'
+const RESOLVED_VIRTUAL_REACT_ROUTER_SW = `\0${VIRTUAL_REACT_ROUTER_SW}`
 
-export function SWPlugin(ctx: RemixPWAContext) {
+export function SWPlugin(ctx: ReactRouterPWAContext) {
   return {
-    name: 'vite-pwa:remix:sw',
+    name: 'vite-pwa:reactrouter:sw',
     enforce: 'pre',
     resolveId(id, _, options) {
-      return !options.ssr && id === VIRTUAL_REMIX_SW ? RESOLVED_VIRTUAL_REMIX_SW : null
+      return !options.ssr && id === VIRTUAL_REACT_ROUTER_SW ? RESOLVED_VIRTUAL_REACT_ROUTER_SW : null
     },
     load(id) {
-      if (id === RESOLVED_VIRTUAL_REMIX_SW) {
+      if (id === RESOLVED_VIRTUAL_REACT_ROUTER_SW) {
         const {
           version,
           enablePrecaching,
@@ -22,14 +22,14 @@ export function SWPlugin(ctx: RemixPWAContext) {
           promptForUpdate,
         } = ctx.sw
 
-        const allRoutes = Object.values(ctx.remixResolvedConfig.routes).filter((r) => {
+        const allRoutes = Object.values(ctx.reactRouterResolvedConfig.routes).filter((r) => {
           return r.index !== true && r.id !== 'root'
         })
         const staticRoutes = allRoutes.filter(r => r.path && !r.path.includes(':'))
         const dynamicRoutes = allRoutes.filter(r => r.path && r.path.includes(':'))
 
         return `export const version = '${version}'
-export const ssr = ${ctx.remixResolvedConfig.ssr}
+export const ssr = ${ctx.reactRouterResolvedConfig.ssr}
 export const enablePrecaching = ${enablePrecaching}
 export const navigateFallback = ${JSON.stringify(navigateFallback)}
 export const clientsClaimMode = ${JSON.stringify(clientsClaimMode)}

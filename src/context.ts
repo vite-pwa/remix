@@ -1,27 +1,27 @@
 import type { ResolvedVitePWAOptions, VitePluginPWAAPI } from 'vite-plugin-pwa'
-import type { ResolvedVitePluginConfig } from '@remix-run/dev/dist/vite/plugin'
-import type { ConfigRoute } from '@remix-run/dev/dist/config/routes'
-import type { RemixPWAInjectManifest } from './types'
+import type { Preset } from '@react-router/dev/config'
+import type { RouteConfig } from '@react-router/dev/routes'
+import type { ReactRouterPWAInjectManifest } from './types'
 
-export interface RemixPWASWContext {
+export interface ReactRouterPWASWContext {
   version: string
   enablePrecaching: boolean
   navigateFallback?: string
   clientsClaimMode: 'auto' | boolean
   cleanupOutdatedCaches: boolean
   promptForUpdate: boolean
-  routes: ConfigRoute[]
+  routes: RouteConfig[]
 }
 
-export interface ResolvedRemixPWASWOptions {
-  injectManifest: Required<RemixPWAInjectManifest>
+export interface ResolvedReactRouterPWASWOptions {
+  injectManifest: Required<ReactRouterPWAInjectManifest>
 }
 
-export interface RemixPWAContext {
-  remixOptions: ResolvedRemixPWASWOptions
-  remixResolvedConfig: ResolvedVitePluginConfig
+export interface ReactRouterPWAContext {
+  reactRouterOptions: ResolvedReactRouterPWASWOptions
+  reactRouterResolvedConfig: Parameters<NonNullable<Preset['reactRouterConfigResolved']>>['0']['reactRouterConfig']
   resolvedPWAOptions?: ResolvedVitePWAOptions
   api?: VitePluginPWAAPI
   build: boolean
-  sw: RemixPWASWContext
+  sw: ReactRouterPWASWContext
 }

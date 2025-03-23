@@ -1,6 +1,10 @@
+<h3>This is a fork from <a href="https://github.com/vite-pwa/remix" target="__blank">
+@vite-pwa/remix
+</a></h3>
+
 <p align='center'>
-<img src='./hero.png' alt="@vite-pwa/remix - Zero-config PWA Plugin for Remix"><br>
-Zero-config PWA Plugin for Remix
+<img src='./hero.png' alt="@vite-pwa/react-router - Zero-config PWA Plugin for React Router"><br>
+Zero-config PWA Plugin for React Router
 </p>
 
 <p align='center'>
@@ -27,7 +31,6 @@ Zero-config PWA Plugin for Remix
   </a>
 </p>
 
-
 ## 🚀 Features
 
 - 📖 [**Documentation & guides**](https://vite-pwa-org.netlify.app/)
@@ -44,19 +47,18 @@ Zero-config PWA Plugin for Remix
 - 💥 **PWA Assets Generator**: generate all the PWA assets from a single command and a single source image
 - 🚀 **PWA Assets Integration**: serving, generating and injecting PWA Assets on the fly in your application
 
-
 ## 📦 Install
 
 `@vite-pwa/remix` requires **Vite 5** and **Remix 2.8.0 or above**.
 
 ```bash
-npm i @vite-pwa/remix -D 
+npm i @vite-pwa/react-router -D
 
-# yarn 
-yarn add @vite-pwa/remix -D
+# yarn
+yarn add @vite-pwa/react-router -D
 
-# pnpm 
-pnpm add @vite-pwa/remix -D
+# pnpm
+pnpm add @vite-pwa/react-router -D
 ```
 
 ## 🦄 Usage
@@ -158,7 +160,6 @@ Check out the following links for more details:
 
 - [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [Workbox](https://developers.google.com/web/tools/workbox)
-
 
 ## 📄 License
 

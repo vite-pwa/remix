@@ -1,9 +1,9 @@
 import type { Plugin } from 'vite'
-import type { RemixPWAContext } from '../context'
+import type { ReactRouterPWAContext } from '../context'
 
-export function BuildPlugin(ctx: RemixPWAContext) {
+export function BuildPlugin(ctx: ReactRouterPWAContext) {
   return {
-    name: 'vite-pwa:remix:build',
+    name: 'vite-pwa:reactrouter:build',
     apply: 'build',
     configResolved(config) {
       if (!config.build.ssr)

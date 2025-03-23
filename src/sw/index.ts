@@ -9,7 +9,7 @@ import {
   ssr,
   staticRoutes,
   version,
-} from 'virtual:vite-pwa/remix/sw'
+} from 'virtual:vite-pwa/reactrouter/sw'
 import { cleanupOutdatedCaches as cleanCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
 import { clientsClaim } from 'workbox-core'
@@ -38,7 +38,7 @@ export function setupPwa(options: PwaOptions = {}) {
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-console
     console.info(
-        `Remix PWA v${version}, using ${
+        `React Router PWA v${version}, using ${
             promptForUpdate ? 'prompt-for-update' : 'auto-update'
         } register mode`,
     )

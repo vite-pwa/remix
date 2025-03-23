@@ -4,13 +4,13 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": [
-      "@remix-run/node",
+      "@react-router/node",
       "vite"
     ],
-    "esModuleInterop": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": ["src/*.ts"],
