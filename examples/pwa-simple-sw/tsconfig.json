@@ -11,10 +11,10 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "@remix-run/node",
+      "@react-router/node",
       "vite/client",
       "vite-plugin-pwa/client",
-      "@vite-pwa/remix/remix-sw"
+      "@vite-pwa/react-router/react-router-sw"
     ],
     "allowJs": true,
     "strict": true,

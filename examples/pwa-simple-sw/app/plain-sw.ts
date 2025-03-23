@@ -3,7 +3,8 @@
 import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
 import { clientsClaim } from 'workbox-core'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
-import { navigateFallback, ssr } from 'virtual:vite-pwa/remix/sw'
+// import { navigateFallback, ssr } from 'virtual:vite-pwa/remix/sw'
+import { navigateFallback, ssr } from 'virtual:vite-pwa/reactrouter/sw'
 import { setupRoutes } from './shared-sw'
 
 declare let self: ServiceWorkerGlobalScope

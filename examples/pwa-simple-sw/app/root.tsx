@@ -1,10 +1,4 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from '@remix-run/react'
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import { PWAManifest } from '@vite-pwa/remix/components'
 
 // export async function loader() {

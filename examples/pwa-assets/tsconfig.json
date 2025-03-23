@@ -10,7 +10,7 @@
       "~/*": ["./app/*"]
     },
     "resolveJsonModule": true,
-    "types": ["@vite-pwa/react-router/sw", "vite/client", "vite-plugin-pwa/vanillajs"],
+    "types": ["@vite-pwa/react-router/react-router-sw", "vite/client", "vite-plugin-pwa/vanillajs"],
     "allowJs": true,
     "strict": true,
     // Vite takes care of building everything, not tsc.

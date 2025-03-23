@@ -1,12 +1,9 @@
-import { vitePlugin as remix } from '@remix-run/dev'
-import { installGlobals } from '@remix-run/node'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { RemixVitePWA } from '@vite-pwa/remix'
+import { reactRouter } from '@react-router/dev/vite'
+import { ReactRouterVitePWA } from '@vite-pwa/react-router'
 
-installGlobals()
-
-const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA()
+export const { ReactRouterVitePWAPlugin } = ReactRouterVitePWA()
 
 // for testing purposes only
 const usingRemixSW = process.env.PLAIN_SW !== 'true'
@@ -25,11 +22,9 @@ export default defineConfig({
     VITE_BUILD_DATE: process.env.VITE_BUILD_DATE,
   },
   plugins: [
-    remix({
-      presets: [RemixPWAPreset()],
-    }),
+    reactRouter(),
     tsconfigPaths(),
-    RemixVitePWAPlugin({
+    ReactRouterVitePWAPlugin({
       srcDir: 'app',
       strategies: 'injectManifest',
       // for testing purposes only
@@ -78,7 +73,7 @@ export default defineConfig({
         type: 'module',
         suppressWarnings: true,
       },
-      remix: {
+      reactRouter: {
         injectManifest: {
           // for testing purposes only
           clientsClaimMode: usingRemixSW ? (virtualPwaModule ? true : 'auto') : undefined,

@@ -7,13 +7,13 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "VIRTUAL_PWA_MODULE=true remix vite:dev",
-    "dev:auto": "remix vite:dev",
-    "dev:plain": "PLAIN_SW=true remix vite:dev",
-    "build": "VIRTUAL_PWA_MODULE=true remix vite:build",
-    "build:auto": "remix vite:build",
-    "build:plain": "PLAIN_SW=true remix vite:build",
-    "start": "remix-serve ./build/server/index.js",
+    "dev": "VIRTUAL_PWA_MODULE=true react-router dev",
+    "dev:auto": "react-router dev",
+    "dev:plain": "PLAIN_SW=true react-router dev",
+    "build": "VIRTUAL_PWA_MODULE=true react-router build",
+    "build:auto": "react-router build",
+    "build:plain": "PLAIN_SW=true react-router build",
+    "start": "node ./build/server/index.js",
     "start:spa": "npx serve build/client",
     "typecheck": "tsc"
   },
