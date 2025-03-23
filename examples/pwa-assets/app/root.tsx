@@ -4,8 +4,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from '@remix-run/react'
-import { PWAAssets } from '@vite-pwa/remix/components'
+} from 'react-router'
+import { PWAAssets } from '@vite-pwa/react-router/components'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

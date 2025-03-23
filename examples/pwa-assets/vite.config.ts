@@ -1,27 +1,21 @@
-import { vitePlugin as remix } from '@remix-run/dev'
-import { installGlobals } from '@remix-run/node'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { RemixVitePWA } from '@vite-pwa/remix'
+import { reactRouter } from '@react-router/dev/vite'
+import { ReactRouterVitePWA } from '@vite-pwa/react-router'
 
-installGlobals()
-
-const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA()
+export const { ReactRouterVitePWAPlugin } = ReactRouterVitePWA()
 
 export default defineConfig({
   plugins: [
-    remix({
-      ssr: process.env.SPA !== 'true',
-      presets: [RemixPWAPreset()],
-    }),
+    reactRouter(),
     tsconfigPaths(),
-    RemixVitePWAPlugin({
+    ReactRouterVitePWAPlugin({
       mode: 'development',
       base: '/',
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Remix PWA',
-        short_name: 'Remix PWA',
+        name: 'React Router PWA',
+        short_name: 'React Router PWA',
         theme_color: '#ffffff',
         start_url: '/',
         display: 'standalone',

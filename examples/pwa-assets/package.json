@@ -1,33 +1,37 @@
 {
   "name": "pwa-assets",
+  "type": "module",
   "private": true,
   "sideEffects": false,
-  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "build": "remix vite:build",
-    "build:spa": "SPA=true remix vite:build",
-    "dev": "remix vite:dev",
-    "dev:spa": "SPA=true remix vite:dev",
-    "start": "remix-serve ./build/server/index.js",
+    "build": "react-router build",
+    "build:spa": "SPA=true react-router vite:build",
+    "dev": "react-router dev",
+    "dev:spa": "SPA=true react-router dev",
+    "start": "react-router serve ./build/server/index.js",
     "start:spa": "npx serve build/client",
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@remix-run/node": "^2.8.1",
-    "@remix-run/react": "^2.8.1",
-    "@remix-run/serve": "^2.8.1",
-    "isbot": "^4.1.0",
+    "@react-router/dev": "^7.4.0",
+    "@react-router/node": "^7.4.0",
+    "isbot": "^5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router": "^7.4.0",
+    "react-router-dom": "^7.4.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.8.1",
+    "@react-router/fs-routes": "^7.4.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "@vite-pwa/assets-generator": "^0.2.4",
-    "@vite-pwa/remix": "workspace:*",
+    "@vite-pwa/react-router": "workspace:*",
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.28.1",
@@ -37,8 +41,5 @@
     "typescript": "^5.4.3",
     "vite": "^5.2.4",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
