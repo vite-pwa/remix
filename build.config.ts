@@ -33,7 +33,6 @@ export default defineBuildConfig([{
     'virtual:pwa-info',
     'virtual:pwa-assets/head',
     'virtual:vite-pwa/remix/sw',
-    'virtual:vite-pwa/reactrouter/sw',
     'workbox-core',
     'workbox-precaching',
     'workbox-routing',
