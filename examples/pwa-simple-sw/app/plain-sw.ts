@@ -1,9 +1,10 @@
 /// <reference types="vite/client" />
 /// <reference lib="webworker" />
-import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
-import { clientsClaim } from 'workbox-core'
-import { NavigationRoute, registerRoute } from 'workbox-routing'
+
 import { navigateFallback, ssr } from 'virtual:vite-pwa/remix/sw'
+import { clientsClaim } from 'workbox-core'
+import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
+import { NavigationRoute, registerRoute } from 'workbox-routing'
 import { setupRoutes } from './shared-sw'
 
 declare let self: ServiceWorkerGlobalScope

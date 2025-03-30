@@ -1,7 +1,7 @@
-import { version } from '../package.json'
 import type { RemixPWAContext } from './context'
-import { RemixPreset } from './plugins/preset'
+import { version } from '../package.json'
 import { MainPlugin } from './plugins'
+import { RemixPreset } from './plugins/preset'
 
 export * from './types'
 

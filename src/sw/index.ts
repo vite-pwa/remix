@@ -1,3 +1,4 @@
+import type { PrecacheEntry } from 'workbox-precaching'
 import {
   cleanupOutdatedCaches,
   clientsClaimMode,
@@ -10,10 +11,9 @@ import {
   staticRoutes,
   version,
 } from 'virtual:vite-pwa/remix/sw'
+import { clientsClaim } from 'workbox-core'
 import { cleanupOutdatedCaches as cleanCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
-import { clientsClaim } from 'workbox-core'
-import type { PrecacheEntry } from 'workbox-precaching'
 
 declare const self: ServiceWorkerGlobalScope
 
@@ -24,13 +24,13 @@ export interface PwaOptions {
 export {
   cleanupOutdatedCaches,
   clientsClaimMode,
+  dynamicRoutes,
   enablePrecaching,
   navigateFallback,
   promptForUpdate,
-  staticRoutes,
-  dynamicRoutes,
   routes,
   ssr,
+  staticRoutes,
 }
 
 // todo: move this to the server? we don't need to do this in the client, the server can generate all the stuff
@@ -38,9 +38,9 @@ export function setupPwa(options: PwaOptions = {}) {
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-console
     console.info(
-        `Remix PWA v${version}, using ${
-            promptForUpdate ? 'prompt-for-update' : 'auto-update'
-        } register mode`,
+      `Remix PWA v${version}, using ${
+        promptForUpdate ? 'prompt-for-update' : 'auto-update'
+      } register mode`,
     )
   }
 

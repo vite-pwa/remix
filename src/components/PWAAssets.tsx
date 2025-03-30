@@ -7,7 +7,7 @@ export function PWAAssets() {
     <>
       {pwaAssetsHead.themeColor
         ? (
-          <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
+            <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
           )
         : null}
       {pwaAssetsHead.links.map(({ href, ...link }) => (

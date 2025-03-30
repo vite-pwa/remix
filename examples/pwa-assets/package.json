@@ -1,8 +1,11 @@
 {
   "name": "pwa-assets",
+  "type": "module",
   "private": true,
   "sideEffects": false,
-  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "remix vite:build",
     "build:spa": "SPA=true remix vite:build",
@@ -37,8 +40,5 @@
     "typescript": "^5.4.3",
     "vite": "^5.2.4",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
