@@ -29,7 +29,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
-    "@vite-pwa/assets-generator": "^0.2.4",
+    "@vite-pwa/assets-generator": "^1.0.0",
     "@vite-pwa/remix": "workspace:*",
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -39,6 +39,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.4",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "workbox-build": "^7.3.0",
+    "workbox-window": "^7.3.0"
   }
 }

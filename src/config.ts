@@ -43,8 +43,9 @@ export function configurePWA(
           else
             ctx.sw.navigateFallback = 'index.html'
         }
-        options.injectManifest.plugins ??= []
-        options.injectManifest.plugins.push(SWPlugin(ctx))
+        options.injectManifest.buildPlugins ??= {}
+        options.injectManifest.buildPlugins.vite ??= []
+        options.injectManifest.buildPlugins.vite.push(SWPlugin(ctx))
 
         config = options.injectManifest
       }

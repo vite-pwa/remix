@@ -65,8 +65,8 @@
   },
   "peerDependencies": {
     "@remix-run/dev": ">=2.8.0",
-    "@vite-pwa/assets-generator": "^0.2.6",
-    "vite-plugin-pwa": ">=0.20.5 <1"
+    "@vite-pwa/assets-generator": "^1.0.0",
+    "vite-plugin-pwa": "^1.0.0"
   },
   "peerDependenciesMeta": {
     "@remix-run/dev": {
