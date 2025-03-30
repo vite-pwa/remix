@@ -1,6 +1,6 @@
-import type { ResolvedVitePWAOptions, VitePluginPWAAPI } from 'vite-plugin-pwa'
-import type { ResolvedVitePluginConfig } from '@remix-run/dev/dist/vite/plugin'
 import type { ConfigRoute } from '@remix-run/dev/dist/config/routes'
+import type { ResolvedVitePluginConfig } from '@remix-run/dev/dist/vite/plugin'
+import type { ResolvedVitePWAOptions, VitePluginPWAAPI } from 'vite-plugin-pwa'
 import type { RemixPWAInjectManifest } from './types'
 
 export interface RemixPWASWContext {

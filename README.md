@@ -27,7 +27,6 @@ Zero-config PWA Plugin for Remix
   </a>
 </p>
 
-
 ## 🚀 Features
 
 - 📖 [**Documentation & guides**](https://vite-pwa-org.netlify.app/)
@@ -44,18 +43,17 @@ Zero-config PWA Plugin for Remix
 - 💥 **PWA Assets Generator**: generate all the PWA assets from a single command and a single source image
 - 🚀 **PWA Assets Integration**: serving, generating and injecting PWA Assets on the fly in your application
 
-
 ## 📦 Install
 
 `@vite-pwa/remix` requires **Vite 5** and **Remix 2.8.0 or above**.
 
 ```bash
-npm i @vite-pwa/remix -D 
+npm i @vite-pwa/remix -D
 
-# yarn 
+# yarn
 yarn add @vite-pwa/remix -D
 
-# pnpm 
+# pnpm
 pnpm add @vite-pwa/remix -D
 ```
 
@@ -67,8 +65,8 @@ Import the `@vite-pwa/remix` helper, create the Remix PWA Preset and the PWA Plu
 // vite.config.js
 import { vitePlugin as remix } from '@remix-run/dev'
 import { installGlobals } from '@remix-run/node'
-import { defineConfig } from 'vite'
 import { RemixVitePWA } from '@vite-pwa/remix'
+import { defineConfig } from 'vite'
 
 installGlobals()
 
@@ -158,7 +156,6 @@ Check out the following links for more details:
 
 - [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [Workbox](https://developers.google.com/web/tools/workbox)
-
 
 ## 📄 License
 

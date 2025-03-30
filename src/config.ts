@@ -1,10 +1,10 @@
-import { resolve as resolvePath } from 'node:path'
+import type { RemixPWAContext } from './context'
+import type { RemixPWAOptions } from './index'
 import { createHash } from 'node:crypto'
 import { createReadStream } from 'node:fs'
 import { lstat } from 'node:fs/promises'
-import type { RemixPWAContext } from './context'
+import { resolve as resolvePath } from 'node:path'
 import { SWPlugin } from './plugins/sw'
-import type { RemixPWAOptions } from './index'
 
 export function configurePWA(
   ctx: RemixPWAContext,

@@ -1,2 +1,2 @@
-export { PWAManifest } from './PWAManifest'
 export { PWAAssets } from './PWAAssets'
+export { PWAManifest } from './PWAManifest'

@@ -1,7 +1,7 @@
-import { resolve } from 'node:path'
-import { rm } from 'node:fs/promises'
 import type { Preset } from '@remix-run/dev'
 import type { RemixPWAContext } from '../context'
+import { rm } from 'node:fs/promises'
+import { resolve } from 'node:path'
 
 export function RemixPreset(ctx: RemixPWAContext) {
   return () => {

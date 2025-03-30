@@ -53,13 +53,13 @@
     }
   },
   "files": [
-    "dist",
-    "*.d.ts"
+    "*.d.ts",
+    "dist"
   ],
   "scripts": {
     "build": "unbuild",
     "lint": "eslint .",
-    "lint-fix": "nr lint --fix",
+    "lint:fix": "nr lint --fix",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
@@ -77,16 +77,16 @@
     }
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.9.0",
+    "@antfu/eslint-config": "^4.11.0",
     "@antfu/ni": "^0.21.12",
     "@remix-run/dev": "^2.8.0",
     "@types/debug": "^4.1.8",
     "@types/node": "^20.8.7",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
     "bumpp": "^9.2.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.23.0",
     "esno": "^4.0.0",
     "https-localhost": "^4.7.1",
     "typescript": "^5.4.3",

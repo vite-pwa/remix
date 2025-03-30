@@ -1,8 +1,11 @@
 {
   "name": "pwa-simple-sw",
+  "type": "module",
   "private": true,
   "sideEffects": false,
-  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "VIRTUAL_PWA_MODULE=true remix vite:dev",
     "dev:auto": "remix vite:dev",
@@ -38,8 +41,5 @@
     "typescript": "^5.4.3",
     "vite": "^5.2.4",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }

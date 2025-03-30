@@ -6,11 +6,11 @@ export function PWAManifest() {
     <>
       { pwaInfo
         ? (
-          <link
-            rel="manifest"
-            href={pwaInfo.webManifest.href}
-            crossOrigin={pwaInfo.webManifest.useCredentials ? 'use-credentials' : undefined}
-          />
+            <link
+              rel="manifest"
+              href={pwaInfo.webManifest.href}
+              crossOrigin={pwaInfo.webManifest.useCredentials ? 'use-credentials' : undefined}
+            />
           )
         : null }
     </>

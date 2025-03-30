@@ -1,8 +1,8 @@
 import type { PluginOption } from 'vite'
-import { VitePWA as PWAPlugin } from 'vite-plugin-pwa'
-import type { RemixPWAOptions } from '../types'
-import { configurePWA } from '../config'
 import type { RemixPWAContext } from '../context'
+import type { RemixPWAOptions } from '../types'
+import { VitePWA as PWAPlugin } from 'vite-plugin-pwa'
+import { configurePWA } from '../config'
 import { BuildPlugin } from './build'
 import { SWPlugin } from './sw'
 
